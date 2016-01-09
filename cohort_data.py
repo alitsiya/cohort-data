@@ -159,12 +159,16 @@ def all_students_tuple_list(filename):
     """
 
     student_list = []
-
-    # Code goes here
+    file_data = open(filename)
+    for line in file_data:
+        line = line.rstrip()
+        line = line.split("|")
+        if line[4] != "TA" or line[4] != "I":
+            student_list.append((line[0] + ' ' + line[1], line[2], line[3], line[4]))
 
     return student_list
-
-
+print '*'*50
+print all_students_tuple_list("cohort_data.txt")
 def find_cohort_by_student_name(student_list):
     """TODO: Given full name, return student's cohort.
 
